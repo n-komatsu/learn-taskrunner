@@ -1,0 +1,37 @@
+{
+  "name": "sample_gulp",
+  "version": "1.0.0",
+  "author": "n-komatsu",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cross-env NODE_ENV=development run-s clean:dev webpack:dev && run-p webpack:watch gulp:default",
+    "clean:dev": "rimraf ./_pages",
+    "webpack:dev": "webpack --mode=development --color --progress --config _develop/tools/webpack/webpack.config.babel.js",
+    "webpack:watch": "webpack --mode=development --color --progress --watch --config _develop/tools/webpack/webpack.config.babel.js",
+    "gulp:default": "gulp --gulpfile ./_develop/tools/gulp/gulpfile.babel.js",
+    "clean:build": "rimraf ./_dist",
+    "gulp:build": "gulp build --gulpfile ./_develop/tools/gulp/gulpfile.babel.js",
+    "webpack:build": "webpack --mode=production --color --progress --config _develop/tools/webpack/webpack.config.babel.js",
+    "build": "cross-env NODE_ENV=production run-s clean:build && run-p gulp:build webpack:build"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.7",
+    "@babel/polyfill": "^7.8.7",
+    "@babel/preset-env": "^7.8.7",
+    "@babel/register": "^7.8.6",
+    "babel-loader": "^8.0.6",
+    "browser-sync": "^2.26.7",
+    "cross-env": "^7.0.2",
+    "gulp": "^4.0.2",
+    "gulp-plumber": "^1.2.1",
+    "gulp-pug": "^4.0.1",
+    "gulp-sass": "^4.0.2",
+    "gulp-sass-glob": "^1.1.0",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.2",
+    "undertaker-registry": "^1.0.1",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
